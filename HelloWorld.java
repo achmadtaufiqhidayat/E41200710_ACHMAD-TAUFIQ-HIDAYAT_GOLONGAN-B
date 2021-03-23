@@ -13,6 +13,6 @@ public static void main(String[]args){
     System.out.println("Hello Worlrd");
     System.out.println("Favourite song: Welcome to My Paradise");
     System.out.println(" So far, i think that's all from me thakns and see you on the next time");	
-    System.out.print(" aku mau makan");
+    System.out.print(" ini hanya percobaan");
     }
 }
