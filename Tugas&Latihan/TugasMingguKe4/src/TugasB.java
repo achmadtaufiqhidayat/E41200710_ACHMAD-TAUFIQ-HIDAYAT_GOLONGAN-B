@@ -12,19 +12,34 @@ public class TugasB {
     public static void main(String[] args) {
         
         System.out.println("                Do-While                ");
-        System.out.println("Menampilkan Bilangan Genap Antara 1-100 ");
+        System.out.println("Menampilkan Kelipatan 2 Antara 1-100 ");
         System.out.println("========================================");
         
         //dekllarasi y
         int y = 1;
         int x = 100;
-        System.out.print(y + " ");
+        //saya memberikan opsi lain untuk menampilkan output yang sama, yakni dengan menggunakan while.
+        //jika ingin menggunakan while, maka aktifkan boolean dibawah ini terlebih dahulu
+        //boolean kondisi = true;
+
         
         //memulai perulangan
-        do{
-        y*=2;
+      do{
+        
         System.out.print(y + " ");
         
+        y = y * 2;
+        
         }while (y <= x);
+        
+         /*  while (kondisi){
+            
+            
+            System.out.print(" " + y); 
+            y*=2;
+            if (y >= x){//ditambah percabangan
+                kondisi = false;    
+            }
+        }*/
     }
 }
