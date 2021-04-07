@@ -35,8 +35,8 @@ public class TreeApp {
         while (true) {
             System.out.print("Enter firt letter of show, " + 
                     "insert, find, delete, or traverse :");
-            int choise = getChar();
-            switch(choise) {
+            int choice = getChar();
+            switch(choice) {
                 case 's':
                     theTree.displayTree();
                     break;
@@ -49,7 +49,7 @@ public class TreeApp {
                     break;
                     
                 case 'f':
-                    System.out.print("ENter value to find : ");
+                    System.out.print("Enter value to find : ");
                     value = getInt();
                     Node found = theTree.find(value);
                     if (found != null){
@@ -78,7 +78,7 @@ public class TreeApp {
                             theTree.traverse(value);
                             break;
                 default :
-                    System.out.println("Invalis entry");
+                    System.out.println("Invalid entry");
                
             
             }
@@ -86,10 +86,10 @@ public class TreeApp {
     }
     
     public static String getString() throws IOException{
-    InputStreamReader isr = new InputStreamReader(System.in);
-    BufferedReader br = new BufferedReader(isr);
-    String s = br.readLine();
-    return s;
+        InputStreamReader isr = new InputStreamReader(System.in);
+         BufferedReader br = new BufferedReader(isr);
+            String s = br.readLine();
+            return s;
     }
     
     public static char getChar() throws IOException{

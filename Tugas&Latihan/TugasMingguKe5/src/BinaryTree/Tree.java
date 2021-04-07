@@ -20,6 +20,7 @@ public Tree(){
 public Node find(int key){Node current = root;
     while (current.id != key){
         if (key < current.id){
+            current = current.leftChild;
         } else{
             current = current.rightChild;
             }
@@ -51,8 +52,9 @@ public  void insert(int id, String data){
             }
         } else{
             current = current.rightChild;
-        if (current == null){
-            parent.rightChild = newNode; return;
+              if (current == null){
+            parent.rightChild = newNode; 
+            return;
                   }
              }
         }
@@ -206,15 +208,14 @@ public void displayTree() {
         }
         
     }else {
-        System.out.print("--");
-        localStack.push(null);localStack.push(null);  
+        System.out.print("--");localStack.push(null);localStack.push(null);  
     }
     for (int j = 0; j < nBlanks * 2 -2 ; j ++){
         System.out.print(' ');
             }
         }
     
-        System.out.println("");
+        System.out.println();
     
         nBlanks /= 2;
         while (localStack.isEmpty() == false){
