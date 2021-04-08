@@ -26,7 +26,8 @@ public class GraphApp {
         theGraph.addEdge(2, 3);//AD
         theGraph.addEdge(3, 4);//DE
         
-        //theGraph.bfs
         theGraph.bfs();
+        theGraph.display();
+       
     }
 }

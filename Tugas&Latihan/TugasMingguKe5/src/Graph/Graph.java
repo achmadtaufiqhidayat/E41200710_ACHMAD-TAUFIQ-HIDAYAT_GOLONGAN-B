@@ -5,21 +5,23 @@
  */
 package Graph;
 
+
 /**
  *
  * @author asus
  */
 
-import java.util.Stack;
+  import java.util.Stack;
 public class Graph {
+  
+
     
     private final int MAX_VERTS =20;
     private Vertex vertexList[];
     private int adjMat[][];
     private int nVerts;
-    
-    
     //BFS
+    
     public void bfs(){
         System.out.println("Visit by using " + " BFS algorithm : ");
         vertexList[0].wasVisited = true;
@@ -28,10 +30,11 @@ public class Graph {
         
         int v2;
         
-        while (!theQueue.isEmpty()){
+        while(!theQueue.isEmpty()){
             int v1 = (int) theQueue.remove();
-            while ((v2 = getAdjUnvisitedVertex(v1)) != -1){
-                vertexList[v2].wasVisited = true;
+            while((v2 = getAdjUnvisitedVertex(v1)) != -1){
+                vertexList[v2].wasVisited=
+                        true;
                 displayVertex(v2);
                 theQueue.insert(v2);
             }
@@ -39,109 +42,57 @@ public class Graph {
         System.out.println("");
         resetFlags();
     }
-    
-    
-    public class Queue{
-        private int maxSize;
-        private long[] queArray;
-        private int front;
-        private int rear;
-        private int nItems;
-        
-        public Queue(int size){
-            this.maxSize = size;
-            queArray = new long[maxSize];
-            front = 0; rear = -1; nItems = 0;
-        }
-        
-        public void insert(long value){
-            if (rear == maxSize - 1){
-                rear = -1;
-            }
-            queArray[++rear] = value;
-            nItems++;
-        }
-        
-        public long remove (){
-            long temp = queArray[front++];
-            if (front == maxSize){
-                front = 0;
-            }
-            nItems--;
-            return temp;
-        }
-        
-        public long peekFont(){
-            return queArray[front];
-        }
-        
-        
-        public boolean isEmpty(){
-            return (nItems == 0);
-        }
-        
-        public boolean isFull(){
-            return (nItems == maxSize);
-        }
-        
-        public int size(){
-            return nItems;
-        }
-        
-    }
     private Queue theQueue;
-    
-    
+
     public Graph(){
-        vertexList =  new Vertex[MAX_VERTS];
-        adjMat = new int [MAX_VERTS][MAX_VERTS];
-        nVerts = 0;
+        vertexList = new Vertex[MAX_VERTS];
+        adjMat = new int [MAX_VERTS] [MAX_VERTS];
+            nVerts = 0;
         for (int i = 0; i < MAX_VERTS; i++){
-            for (int j = 0; j < MAX_VERTS; j++){
-                adjMat[i][j] = 0;
-            }
-        }
-        
-        //DFS
-        //theStacck = new Stack(MAX_VERTS);
-        //theStack = new Stack(MAX_VERTS);
-        theQueue = new Queue(MAX_VERTS);
+             for (int j = 0; j < MAX_VERTS; j++){
+                 adjMat[i][j] = 0;
+          }
+         }
+    //DFS
+    //theStack = new Stack(MAX_VERTS);
+    //the Stack = new Stack(MAX_VERTS);
+    theQueue = new Queue(MAX_VERTS);
     }
     
     public void addVertex(char label){
         vertexList[nVerts++] =
-         new Vertex(label);
+                new Vertex (label);
     }
-    public void addEdge (int start, int end){
-        adjMat [start][end] = 1;
+    
+    public void addEdge(int start, int end){
+        adjMat[start][end] = 1;
         adjMat[end][start] = 1;
     }
     
     public void display(){
-        System.out.println("Adjecency: ");
+        System.out.println("Adjacency: ");
         for (int row = 0; row < nVerts; row++){
             for (int col = 0; col < row; col++){
                 if(adjMat[row][col] == 1){
                     System.out.println(
-                     vertexList[row].label + " -- " + vertexList[col].label);
+                            vertexList[row].label + "--" + vertexList[col].label);
                 }
             }
         }
         System.out.println("");
     }
     
-    
     public void displayVertex(int v){
-        System.out.println(vertexList[v].label + " ");
+        System.out.print(vertexList[v].label + " ");
     }
     
     public int getAdjUnvisitedVertex(int v){
-    for (int i = 0; i < nVerts; i++){
-        if (adjMat[v][i] == 1 && vertexList[i].wasVisited == false){
+        for (int i = 0; i < nVerts; i++){
+            if (adjMat[v][i] == 1 && vertexList[i].wasVisited == false){
             return i;
+            }
         }
-    }
-    return -1;
+        return -1;
     }
     
     private void resetFlags(){
@@ -149,4 +100,5 @@ public class Graph {
             vertexList[i].wasVisited = false;
         }
     }
-}//CLASS 
+
+}
