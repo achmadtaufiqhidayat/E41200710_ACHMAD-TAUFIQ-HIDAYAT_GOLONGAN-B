@@ -21,29 +21,10 @@ public class Graph {
     private int adjMat[][];
     private int nVerts;
     //BFS
-    
-    public void bfs(){
-        System.out.println("Visit by using " + " BFS algorithm : ");
-        vertexList[0].wasVisited = true;
-        displayVertex(0);
-        theQueue.insert(0);
-        
-        int v2;
-        
-        while(!theQueue.isEmpty()){
-            int v1 = (int) theQueue.remove();
-            while((v2 = getAdjUnvisitedVertex(v1)) != -1){
-                vertexList[v2].wasVisited=
-                        true;
-                displayVertex(v2);
-                theQueue.insert(v2);
-            }
-        }
-        System.out.println("");
-        resetFlags();
-    }
     private Queue theQueue;
-
+    //DFS
+    private StackForDFS theStack;
+    
     public Graph(){
         vertexList = new Vertex[MAX_VERTS];
         adjMat = new int [MAX_VERTS] [MAX_VERTS];
@@ -54,20 +35,23 @@ public class Graph {
           }
          }
     //DFS
-    //theStack = new Stack(MAX_VERTS);
-    //the Stack = new Stack(MAX_VERTS);
+    theStack = new StackForDFS();
+    //the Stack = new Stack(MAX_VERTS)
+    //BFS
     theQueue = new Queue(MAX_VERTS);
     }
     
+    
     public void addVertex(char label){
-        vertexList[nVerts++] =
-                new Vertex (label);
+        vertexList[nVerts++] = new Vertex (label);
     }
+    
     
     public void addEdge(int start, int end){
         adjMat[start][end] = 1;
         adjMat[end][start] = 1;
     }
+    
     
     public void display(){
         System.out.println("Adjacency: ");
@@ -82,23 +66,79 @@ public class Graph {
         System.out.println("");
     }
     
+    
+    
     public void displayVertex(int v){
         System.out.print(vertexList[v].label + " ");
     }
     
+    
+    
     public int getAdjUnvisitedVertex(int v){
-        for (int i = 0; i < nVerts; i++){
-            if (adjMat[v][i] == 1 && vertexList[i].wasVisited == false){
-            return i;
+        for (int j = 0; j < nVerts; j++){
+            if (adjMat[v][j] == 1 && vertexList[j].wasVisited == false){
+            return j;
             }
         }
         return -1;
     }
     
-    private void resetFlags(){
+    
+    
+   private void resetFlags(){
         for (int i = 0; i < nVerts; i++){
             vertexList[i].wasVisited = false;
         }
     }
+    
+    
+    public void bfs(){
+        System.out.println("Visit by using " + " BFS algorithm : ");
+        vertexList[0].wasVisited = true;
+        displayVertex(0);
+        theQueue.insert(0);
+        
+        int v2;
+        
+        while(!theQueue.isEmpty()){
+            int v1 = (int) theQueue.remove();
+            while((v2 = getAdjUnvisitedVertex(v1)) != -1){
+                vertexList[v2].wasVisited = true;
+                displayVertex(v2);
+                theQueue.insert(v2);
+            }
+        }
+
+        System.out.println("");
+       resetFlags();
+     //  for (int j = 0; j < nVerts; j++) { // reset flags
+       //     vertexList[j].wasVisited = false;}
+    }
+    
+    //
+    //
+     public void depthFirstSearch( ) {
+     System.out.println("Visit by using " + " DFS algorithm : ");
+        vertexList[0].wasVisited = true;
+        displayVertex(0);
+        theStack.push(0);
+        
+        while (!theStack.isEmpty()){
+            int v = getAdjUnvisitedVertex(theStack.peek());
+                 if (v == -1){
+                   theStack.pop();
+                } else {
+                 vertexList[v].wasVisited = true;
+                 displayVertex(v);
+                 theStack.push(v);
+                }
+        
+        }
+    
+       
+        resetFlags();
+    
+    }
+
 
 }
