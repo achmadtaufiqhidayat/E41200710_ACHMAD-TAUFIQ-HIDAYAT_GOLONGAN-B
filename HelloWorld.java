@@ -14,5 +14,6 @@ public static void main(String[]args){
     System.out.println("Favourite song: Welcome to My Paradise");
     System.out.println(" So far, i think that's all from me thakns and see you on the next time");	
     System.out.print(" ini hanya percobaan");
+	System.out.println(" saya hanya mencoba belajar");
     }
 }
