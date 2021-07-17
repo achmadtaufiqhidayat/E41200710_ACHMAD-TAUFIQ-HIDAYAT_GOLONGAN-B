@@ -41,7 +41,7 @@ public class DataMahasiswa extends javax.swing.JFrame {
         tabel.setModel(tb1);
         try{
             Statement statement = (Statement)conneksi.GetConnection().createStatement();
-            ResultSet res=statement.executeQuery("select  * from mahasiswa");
+            ResultSet res=statement.executeQuery("select  * from mahasiswa ");
             while (res.next()) 
             {
                 tb1.addRow (new Object[]{
