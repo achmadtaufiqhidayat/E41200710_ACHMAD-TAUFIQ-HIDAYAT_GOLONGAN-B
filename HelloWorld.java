@@ -16,5 +16,6 @@ public static void main(String[]args){
     System.out.print(" ini hanya percobaan");
 	System.out.println(" saya hanya mencoba belajar");
 	System.out.print("\n makan nasi");
+
     }
 }
